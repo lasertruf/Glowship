@@ -1,0 +1,140 @@
+ <mat-drawer-container class="example-container" autosize hasBackdrop="false">
+    <mat-drawer class="drawerclass" #drawer opened mode="over">
+       
+        <div style="display: flex; padding: 10px; background-color: #1b71c3; height: 45px;">
+        <div> <img src="../../assets/Glowship_logo_full.png" style="padding-top: 5px;padding-bottom: 10px; width: 70%;
+         height: auto;" alt="logo">
+        </div>
+        <div>
+         <button mat-icon-button style="margin-left: 25px;" (click)="drawer.toggle()">
+             <mat-icon style="color: white;">menu</mat-icon>
+            </button>
+         </div>
+        </div>
+          
+ <div style="display: flex; flex-direction: column; ">
+     <div style="display: flex; border-radius: 5px; margin: 5px; padding: 10px; background-color: beige; color: #1968b3ff;">
+         <mat-icon style="color:#1b71c3;"  aria-hidden="false"
+         aria-label="person icon">record_voice_over</mat-icon>  
+         <div style="padding-left: 15px;padding-top: 5px;"> 
+           <a href="#" style="text-decoration: none; color:#1b71c3 ;" (click)="onCallLeads()">   Call Leads </a> 
+         </div>      
+ 
+     </div>
+       
+     <div style="display: flex;border-radius: 5px; padding: 10px; margin: 5px; background-color: beige; color: #1968b3ff;">
+         <mat-icon style="color: #1b71c3; "  aria-hidden="false"
+         aria-label="person icon">format_list_bulleted </mat-icon>  
+         <div style="padding-left: 15px;padding-top: 5px;"> 
+          <a href="#" style="text-decoration: none; color:  #1b71c3">   Leads List  </a> 
+        </div>
+         
+ 
+     </div>
+ 
+ </div>
+
+     </mat-drawer>
+
+     <mat-drawer-content >
+         
+        <mat-toolbar style="background-color:  #efefef ;" >
+            <button mat-icon-button  aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+        
+        
+            <span class="example-spacer"></span>
+
+            <mat-accordion class="example-headers-align" multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      User
+                  </mat-panel-title>
+                 
+                    <mat-icon>account_circle</mat-icon>
+                
+                </mat-expansion-panel-header>
+
+              </mat-expansion-panel>
+           </mat-accordion>
+
+          </mat-toolbar>
+        
+          <div style="z-index: -1; background-color: #1b71c3 ; height: 30%;" >      
+             
+            <div style=" margin-left : 350px ; display: flex; padding-top: 25px;" >
+              
+              <div> <mat-icon style="color:white"  aria-hidden="false"
+                aria-label="person icon">record_voice_over</mat-icon>  
+              </div>
+              
+              <div style="padding-left: 15px; padding-top: 0; color: white;"> 
+                <h2> Call Leads </h2>  
+              </div> 
+              
+              <div style="margin-left: 150px; display: flex;" >
+                    
+
+                    <div style="color: rgb(51, 51, 51);">
+                      <mat-form-field style="width: 400px;" appearance="outline">
+                       
+                        <input style="background-color: rgb(167, 163, 163);" matInput style="border-radius:25px;" placeholder="Search with a number">
+                        <mat-icon matPrefix>search</mat-icon>
+                       
+                      </mat-form-field>
+                    
+
+                    </div>
+
+                
+              
+              </div>
+ 
+            </div>
+
+             
+        <div style="display: flex;"> 
+        
+            <div class="unassignedLeads">
+
+              <h2 > Last 10 unassigned leads</h2>
+              <div *ngFor="let l of leadsarr" style="display: flex;"> 
+
+                <div>
+                  <h4 style="padding: 2px; margin: 2px;">   {{l.number}} </h4>
+               </div>
+
+                <div style="  padding-left: 100px;">
+                  <h4 style="padding: 2px;margin: 2px;">  {{l.days}} </h4>
+               </div>
+
+              </div>
+              <div style="color: blue; margin: 5px;" > VIEW ALL </div>
+
+            </div >
+
+
+            <div>
+                  
+                  
+
+            </div>
+          
+        </div>
+
+
+          
+          </div>
+      
+         
+
+         
+
+        
+     </mat-drawer-content>
+
+
+  </mat-drawer-container>
+ 

@@ -1,0 +1,51 @@
+.bgimg{
+    
+    background-image: url('../../assets/landingpage.jpg');
+    
+    height: 600px;
+    background-size: 100% 100%;
+
+  }
+
+  .logindiv{
+
+    border-radius: 10px;
+    background-color: white;
+    height: 400px;
+    width: 300px;
+ margin-top: 100px;
+ text-align: center;
+
+  }
+
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    padding-bottom: 5px;
+  }
+  
+  .example-full-width {
+    width: 70%;
+
+    
+}
+
+
+.enabledContinue{
+    width:70% ;height: auto; background-color:  #1968b3ff   ; color: white;
+    
+}
+
+.disbledContinue{
+    width:70% ;height: auto; background-color:  #9e9e9eff   ; color: rgb(46, 45, 45);
+    margin-top: 15px;
+
+}
+
+.mat-raised-button{
+
+width :70% 
+
+}

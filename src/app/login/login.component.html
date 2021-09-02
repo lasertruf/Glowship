@@ -1,0 +1,94 @@
+
+
+<div class = "bgimg">
+
+
+<div style="display: flex;justify-content: center;">
+        
+    <div *ngIf="!isLogin && !resetPassword" class="logindiv" >
+   <img src="../../assets/Glowship_logo_full.png" style="padding-top: 50px; width: 60%;
+   height: auto;" alt="logo">
+   <br><br><br>
+
+   <form [formGroup]="emailfg"  class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email"  placeholder="Ex. person@domain.com" required>
+      <mat-error *ngIf="emailfg.controls['email'].hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailfg.controls['email'].hasError('required')">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="emailfg.controls['email'].hasError('maxlength') && !emailfg.controls['email'].hasError('required')  ">
+        Only 50 characters are allowed.
+      </mat-error>
+    </mat-form-field>
+  </form>
+  
+   <button mat-raised-button 
+   type="reset" 
+   [ngClass]="{ 'enabledContinue': emailfg.valid , 'disabledContinue':emailfg.invalid }"
+   (click)="onContinue()" [disabled]="emailfg.invalid"> CONTINUE  </button>
+
+   <br><br>
+  
+ <a style="text-decoration: none;" href="#" (click)="onForgotPassword()">
+       <p style="color: #1968b3ff; " >Forgot Password?</p>
+   </a>
+
+   <div *ngIf="!resetPassword" > 
+    <p style="color: red;"> {{errmsg}} </p>   
+    </div>
+
+  
+ 
+
+ 
+
+ </div>
+   
+                
+    
+
+
+    <div *ngIf="isLogin && !resetPassword" class="logindiv" >
+        <img src="../../assets/Glowship_logo_full.png" style="padding-top: 50px; width: 60%;
+        height: auto;" alt="logo">
+        <br><br><br>
+        <form [formGroup]="passwordfg"  class="example-form">
+         <mat-form-field class="example-full-width" appearance="fill">
+           <mat-label>Password</mat-label>
+           <input type="password" matInput formControlName="password"  placeholder="Min 8 characters" required>
+           <mat-error *ngIf="passwordfg.controls['password'].hasError('required')">
+             Password is required.
+           </mat-error>
+           <mat-error *ngIf="passwordfg.controls['password'].hasError('minlength')">
+            Minimum 8 characters required.
+          </mat-error>
+          
+         </mat-form-field>
+       </form>
+       
+        <button mat-raised-button 
+        type="reset" 
+        [ngClass]="{ 'enabledContinue': passwordfg.valid , 'disabledContinue':passwordfg.invalid }"
+        (click)="onSubmit()" [disabled]="passwordfg.invalid"> LOGIN  </button>
+                     
+         </div>
+
+
+
+         <div *ngIf="resetPassword" class="logindiv"> 
+            <img src="../../assets/Glowship_logo_full.png" style="padding-top: 50px; width: 60%;
+            height: auto;" alt="logo">
+            <br><br><br>
+            <p >  An email with a password reset link has been sent to you.   </p>   
+          
+        </div>
+            
+       
+
+</div>
+
+</div>
