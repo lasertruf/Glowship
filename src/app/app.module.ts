@@ -13,17 +13,20 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select'; 
+import {MatGridListModule} from '@angular/material/grid-list'; 
 
 
-
-import { CallLeadsComponent } from './call-leads/call-leads.component'; 
+import { CallLeadsComponent } from './call-leads/call-leads.component';
+import { CLeadsFormComponent } from './c-leads-form/c-leads-form.component'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CallLeadsComponent
+    CallLeadsComponent,
+    CLeadsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,8 @@ import { CallLeadsComponent } from './call-leads/call-leads.component';
     MatToolbarModule,
     MatAutocompleteModule,
     MatExpansionModule,
+    MatSelectModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

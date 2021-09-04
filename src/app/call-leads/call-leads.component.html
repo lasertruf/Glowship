@@ -11,9 +11,11 @@
             </button>
          </div>
         </div>
-          
+
+        <!--     -->
+
  <div style="display: flex; flex-direction: column; ">
-     <div style="display: flex; border-radius: 5px; margin: 5px; padding: 10px; background-color: beige; color: #1968b3ff;">
+     <div [ngClass]="{ 'drawerContent': isCallLeads , 'drawerContentNot': !isCallLeads }" >
          <mat-icon style="color:#1b71c3;"  aria-hidden="false"
          aria-label="person icon">record_voice_over</mat-icon>  
          <div style="padding-left: 15px;padding-top: 5px;"> 
@@ -22,11 +24,11 @@
  
      </div>
        
-     <div style="display: flex;border-radius: 5px; padding: 10px; margin: 5px; background-color: beige; color: #1968b3ff;">
+     <div [ngClass]="{ 'drawerContent': isLeadsList , 'drawerContentNot': !isLeadsList }">
          <mat-icon style="color: #1b71c3; "  aria-hidden="false"
          aria-label="person icon">format_list_bulleted </mat-icon>  
          <div style="padding-left: 15px;padding-top: 5px;"> 
-          <a href="#" style="text-decoration: none; color:  #1b71c3">   Leads List  </a> 
+          <a href="#" style="text-decoration: none; color:  #1b71c3"  (click)="onLeadsList()" >   Leads List  </a> 
         </div>
          
  
@@ -46,19 +48,49 @@
         
             <span class="example-spacer"></span>
 
+        <div class="formarea4">
             <mat-accordion class="example-headers-align" multi>
-              <mat-expansion-panel>
+              <mat-expansion-panel style="position: absolute; z-index: 3; right: 10px; top: 10px; height: auto; " >
                 <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      User
+               <div style="display: flex;flex-direction: column; flex:1 1 auto; font-size: 14px;">
+                   <div class="fitem" >
+                  <mat-panel-title style="padding-left: 5px; margin: 0px;">
+                                Username   
                   </mat-panel-title>
+                    </div>
+
+                  <div class="fitem">
+                    <mat-panel-description  style="padding-left: 5px ; margin: 0px;" >
+                     
+                      user@email.com
+                     
+                    </mat-panel-description>
                  
-                    <mat-icon>account_circle</mat-icon>
+                  </div>
+                </div>
+                   <!-- <mat-icon style="padding-top : 10px; padding-right: 10px;">account_circle</mat-icon> -->
                 
                 </mat-expansion-panel-header>
 
+                <div style=" width: 94%; background-color: #efefef; padding: 5px; padding-right: 0px;" >
+                  
+                  <a  href="#" style="text-decoration: none; color: black; ">
+                  <p>Change Password</p>
+                  </a>
+                  
+                  <a  href="#" style="text-decoration: none; color: black; "> 
+                    <p >Logout</p>
+                    </a>
+                
+                  
+                 
+                
+                </div>
+
               </mat-expansion-panel>
            </mat-accordion>
+        </div>
+
 
           </mat-toolbar>
         
@@ -70,11 +102,11 @@
                 aria-label="person icon">record_voice_over</mat-icon>  
               </div>
               
-              <div style="padding-left: 15px; padding-top: 0; color: white;"> 
+              <div style="padding-left: 15px;  color: white;"> 
                 <h2> Call Leads </h2>  
               </div> 
               
-              <div style="margin-left: 150px; display: flex;" >
+              <div style="margin-left: 170px; display: flex;" >
                     
 
                     <div style="color: rgb(51, 51, 51);">
@@ -87,9 +119,6 @@
                     
 
                     </div>
-
-                
-              
               </div>
  
             </div>
@@ -116,11 +145,155 @@
             </div >
 
 
-            <div>
+            <div class="formarea"> 
+                    <app-c-leads-form></app-c-leads-form>      
+                     
+            </div>
+
+            <div class="formarea2"> 
+
+                    <div>
+                      <h3>Script</h3>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Dolorum incidunt repellat minima, quod eius iusto totam corrupti 
+                        ullam culpa consequatur quam, repellendus, similique quibusdam! 
+                        Sunt sequi aut voluptates quae odio?
+                      </p>
+                    </div>      
                   
+            </div>
+
+
+            <div class="formarea3" id="insights" >
+              <mat-accordion  multi>
+                <mat-expansion-panel style="width: 100%;" [expanded]="true">
+                  <mat-expansion-panel-header style="margin-top: 5px;">
+                    <mat-panel-title>
+                     
+                     
+                      <div style="margin-top: 0px; width: 100%;">
+                       Insights
+                      </div>
+                    
+                    </mat-panel-title>
+
+                     <!-- <mat-icon style="padding-top : 10px; padding-right: 10px;">account_circle</mat-icon> -->
+           
+                  </mat-expansion-panel-header>
+  
+                  <div style="display: flex; flex-direction: row;">
+                
+                    <div style="margin-bottom: 10px; ">
+                      
+                      <p  >Electricity Bill</p>
+                    
+                      <p style="display:inline-block; top:0px" >Rs.3,500/- per month </p>
+                      <mat-icon></mat-icon>
+                    
+                     </div>
+
+                     <div style="margin-left: 50px;">
+
+                       <p  >Average Tariff</p>
+                      
+                       
+                       <p style="display:inline-block; top:0px">Rs.7.2/unit</p>
+                       <button mat-icon-button (click)="onClickInfo()">  <mat-icon style="color: blue;" >info</mat-icon>  </button>
+                      
+                
+                     </div>
+                   
                   
+                  </div>
+
+
+                  <div style="display: flex;">
+                    <div class="card"> 
+                    <p style="background-color: blue; color: white; padding: 10px; box-shadow: .1px -1px 5px grey; border-radius: 5px 5px 0 0; height: 20px;">Off-grid</p>
+                    
+                  <div style="display: flex; flex-direction: row;">
+                
+                    <div style=" padding-left: 5px; margin: 10px;">
+                      
+                      <p style="display:inline-block; top:0px" >Budget</p>
+                      <mat-icon></mat-icon>
+                      <p>3.2kW/</p>
+                 
+                      49% Savings
+                    
+                     </div>
+
+                     <div style=" padding-left: 50px; margin: 10px;">
+
+                       <p style="display:inline-block; top:0px" >Comfort</p>
+                       <mat-icon style="padding-left: 10px;" ></mat-icon>
+                       
+                       <p>3.2kW/</p>
+                     
+                       49% Savings
+                     
+                
+                     </div>
+                   
+                  
+                  </div>
+
+                  </div>
+
+
+
+                    <div class="card"> 
+                      <p style="background-color: blue; color: white; padding: 10px;  border-radius: 5px 5px 0 0;  height: 20px;">Grid-tied</p>
+                    
+                      <div style="display: flex; flex-direction: row;">
+                
+                        <div style=" padding-left: 5px; margin: 10px;">
+                          
+                          <p style="display:inline-block; top:0px" >Budget</p>
+                          <mat-icon></mat-icon>
+                          <p>3.2kW/</p>
+                     
+                          49% Savings
+                        
+                         </div>
+    
+                         <div style=" padding-left: 50px; margin: 10px;">
+    
+                           <p style="display:inline-block; top:0px" >Comfort</p>
+                           <mat-icon style="padding-left: 10px;" ></mat-icon>
+                           
+                           <p>3.2kW/</p>
+                         
+                           49% Savings
+                         
+                    
+                         </div>
+                       
+                      
+                      </div>
+                    
+                    </div>
+
+
+
+                  </div>
+
+
+              
+                </mat-expansion-panel>
+             </mat-accordion>
 
             </div>
+
+<!-- FORM AREA 3 ABOVE, INSIGHTS EXP PANEL -->
+
+          <div class="formarea5"> 
+
+                          
+                  
+          </div>
+
+
           
         </div>
 

@@ -1,3 +1,4 @@
+import { ViewEncapsulation } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
@@ -6,13 +7,17 @@ import {map, startWith} from 'rxjs/operators';
 @Component({
   selector: 'app-call-leads',
   templateUrl: './call-leads.component.html',
-  styleUrls: ['./call-leads.component.css']
+  styleUrls: ['./call-leads.component.css'],
+ 
 })
 export class CallLeadsComponent implements OnInit {
 
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions!: Observable<any>;
+
+  isCallLeads : boolean = true;
+  isLeadsList : boolean = false;
   constructor() { }
 
   leadsarr =  [{'number':9863789920,'days':"3d"},{'number':9863789920,'days':"2d"},{'number':9863789920,'days':"2d"},
@@ -43,7 +48,20 @@ export class CallLeadsComponent implements OnInit {
 
 onCallLeads()
 {
-  
+  this.isCallLeads=true;
+  this.isLeadsList=false;
 }
+
+
+onLeadsList(){
+  this.isLeadsList=true;
+  this.isCallLeads=false;
+
+}
+
+onClickInfo(){
+    
+}
+
   
 }
