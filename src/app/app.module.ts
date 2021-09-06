@@ -15,10 +15,14 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatTableModule} from '@angular/material/table'; 
+import {MatRadioModule} from '@angular/material/radio'; 
+import {MatMenuModule} from '@angular/material/menu'; 
 
 
 import { CallLeadsComponent } from './call-leads/call-leads.component';
-import { CLeadsFormComponent } from './c-leads-form/c-leads-form.component'; 
+import { CLeadsFormComponent } from './c-leads-form/c-leads-form.component';
+import { LeadsListComponent } from './leads-list/leads-list.component'; 
 
 
 @NgModule({
@@ -26,7 +30,8 @@ import { CLeadsFormComponent } from './c-leads-form/c-leads-form.component';
     AppComponent,
     LoginComponent,
     CallLeadsComponent,
-    CLeadsFormComponent
+    CLeadsFormComponent,
+    LeadsListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,9 @@ import { CLeadsFormComponent } from './c-leads-form/c-leads-form.component';
     MatExpansionModule,
     MatSelectModule,
     MatGridListModule,
+    MatTableModule,
+    MatMenuModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

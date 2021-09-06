@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { VarsService } from '../vars.service';
 
 @Component({
   selector: 'app-call-leads',
   templateUrl: './call-leads.component.html',
-  styleUrls: ['./call-leads.component.css'],
+  styleUrls: ['./call-leads.component.scss'],
  
 })
 export class CallLeadsComponent implements OnInit {
@@ -16,9 +17,11 @@ export class CallLeadsComponent implements OnInit {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions!: Observable<any>;
 
-  isCallLeads : boolean = true;
-  isLeadsList : boolean = false;
-  constructor() { }
+  isCallLeads = this.vs.isCallLeadsVar;
+  isLeadsList = this.vs.isLeadsListVar;
+  
+  activeTab: number = 1;
+  constructor( public vs : VarsService ) { }
 
   leadsarr =  [{'number':9863789920,'days':"3d"},{'number':9863789920,'days':"2d"},{'number':9863789920,'days':"2d"},
                {'number':9863789920,'days':"2d"},{'number':9863789920,'days':"2d"},{'number':9863789920,'days':"2d"},
@@ -50,12 +53,15 @@ onCallLeads()
 {
   this.isCallLeads=true;
   this.isLeadsList=false;
+  this.vs.setvars(this.isCallLeads,this.isLeadsList);
 }
 
 
 onLeadsList(){
   this.isLeadsList=true;
   this.isCallLeads=false;
+  this.vs.setvars(this.isCallLeads,this.isLeadsList);
+
 
 }
 

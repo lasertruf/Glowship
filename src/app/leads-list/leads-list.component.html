@@ -1,0 +1,215 @@
+<mat-drawer-container class="example-container" autosize hasBackdrop="false">
+    <mat-drawer class="drawerclass" #drawer opened mode="over">
+       
+        <div style="display: flex; padding: 10px; background-color: #1b71c3; height: 45px;">
+        <div> <img src="../../assets/Glowship_logo_full.png" style="padding-top: 5px;padding-bottom: 10px; width: 70%;
+         height: auto;" alt="logo">
+        </div>
+        <div>
+         <button mat-icon-button style="margin-left: 25px;" (click)="drawer.toggle()">
+             <mat-icon style="color: white;">menu</mat-icon>
+            </button>
+         </div>
+        </div>
+
+        <!--     -->
+
+ <div style="display: flex; flex-direction: column; ">
+     <div [ngClass]="{ 'drawerContent': isCallLeads , 'drawerContentNot': !isCallLeads }" >
+         <mat-icon style="color:#1b71c3;"  aria-hidden="false"
+         aria-label="person icon">record_voice_over</mat-icon>  
+         <div style="padding-left: 15px;padding-top: 5px;"> 
+           <a href="#" style="text-decoration: none; color:#1b71c3 ;" (click)="onCallLeads()">   Call Leads </a> 
+         </div>      
+ 
+     </div>
+       
+     <div [ngClass]="{ 'drawerContent': isLeadsList , 'drawerContentNot': !isLeadsList }">
+         <mat-icon style="color: #1b71c3; "  aria-hidden="false"
+         aria-label="person icon">format_list_bulleted </mat-icon>  
+         <div style="padding-left: 15px;padding-top: 5px;"> 
+          <a href="#" style="text-decoration: none; color:  #1b71c3"  (click)="onLeadsList()" >   Leads List  </a> 
+        </div>
+         
+ 
+     </div>
+ 
+ </div>
+
+     </mat-drawer>
+
+     <mat-drawer-content >
+         
+        <mat-toolbar style="background-color:  #efefef ;" >
+            <button mat-icon-button  aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+        
+        
+            <span class="example-spacer"></span>
+
+        <div class="formarea4">
+              <div style="position: absolute; z-index: 3; right: 30px; top: 10px; height: auto; " >
+               <div style="width: 100%;"> 
+                    <p style="position: absolute; top: 2px; margin:0; left: 1px; font-size: 14px;">A Username  </p>
+                    <p style="position: absolute; top: 18px; margin: 0; left: 1px; font-size: 12px;">user@email.com</p>
+                    <button  style="position: absolute; top: 12px; left: 100px;" mat-icon-button [matMenuTriggerFor]="beforeMenu">
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </button>
+                  </div>
+
+            
+              <mat-menu #beforeMenu="matMenu" xPosition="before" >
+                <button mat-menu-item>Change Password</button>
+                <button mat-menu-item>Logout</button>
+              </mat-menu>
+              </div>
+        </div>
+
+
+          </mat-toolbar>
+        
+          <div style="z-index: -1; background-color: #1b71c3 ; height: 30%;" >      
+             
+            <div style=" margin-left : 350px ; display: flex; padding-top: 25px;" >
+              
+              <div> <mat-icon style="color:white"  aria-hidden="false"
+                aria-label="person icon">format_list_bulleted</mat-icon>  
+              </div>
+              
+              <div style="padding-left: 15px;  color: white;"> 
+                <h2> Call List </h2>  
+              </div> 
+              
+            
+ 
+            </div>
+
+
+<!-- TABLE LOGIC BELOW             -->
+             
+        <div style="display: flex;"> 
+
+
+            <div class="tablearea">
+                <mat-radio-group aria-label="Select an option">
+                    <p style="display:inline-block; padding-right: 20px; font-size:18px;"> Filter by assigned on :  </p>
+                    <mat-radio-button value="1">All</mat-radio-button>
+                    <mat-radio-button value="2">Not Assigned</mat-radio-button>
+                    <mat-radio-button value="3">Assigned</mat-radio-button>
+                  </mat-radio-group>
+                  
+
+                <mat-form-field appearance="standard">
+                    <mat-label>Search</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" #input>
+                    <mat-icon matPrefix>search</mat-icon>
+
+                  </mat-form-field>
+                  
+                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            
+ <!-- LeadMobile', 'ReceivedOn', 'LeadName', 'LeadZip', 'Status','AssignedOn','AssignedBy','SPName','SPNumber' -->
+                  
+ <ng-container matColumnDef="LeadMobile">
+  <th mat-header-cell *matHeaderCellDef> Lead Mobile </th>
+  <td mat-cell *matCellDef="let element"> {{element.LeadMobile}} </td>
+</ng-container>
+
+<!-- Name Column -->
+<ng-container matColumnDef="ReceivedOn">
+  <th mat-header-cell *matHeaderCellDef> Received On </th>
+  <td mat-cell *matCellDef="let element"> {{element.ReceivedOn}} </td>
+</ng-container>
+
+<!-- Weight Column -->
+<ng-container matColumnDef="LeadName">
+  <th mat-header-cell *matHeaderCellDef> Lead Name </th>
+  <td mat-cell *matCellDef="let element"> {{element.LeadName}} </td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="LeadZip">
+  <th mat-header-cell *matHeaderCellDef> Lead Zip </th>
+  <td mat-cell *matCellDef="let element"> {{element.LeadZip}} </td>
+</ng-container>
+
+<!--  Column -->
+<ng-container matColumnDef="Status">
+  <th mat-header-cell *matHeaderCellDef> Status </th>
+  <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="AssignedOn">
+  <th mat-header-cell *matHeaderCellDef> Assigned On </th>
+  <td mat-cell *matCellDef="let element"> {{element.AssignedOn}} </td>
+</ng-container>
+
+<!-- S -->
+<ng-container matColumnDef="AssignedBy">
+  <th mat-header-cell *matHeaderCellDef> Assigned By </th>
+  <td mat-cell *matCellDef="let element"> {{element.AssignedBy}} </td>
+</ng-container>
+
+<!-- Sn -->
+<ng-container matColumnDef="SPName">
+  <th mat-header-cell *matHeaderCellDef> Salesperson Name</th>
+  <td mat-cell *matCellDef="let element"> {{element.SPName}} </td>
+</ng-container>
+
+<!-- Snum -->
+<ng-container matColumnDef="SPNumber">
+  <th mat-header-cell *matHeaderCellDef> Salesperson Number</th>
+  <td mat-cell *matCellDef="let element"> {{element.SPNumber}} </td>
+</ng-container>
+                
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr>
+
+                  </table>
+                  
+
+
+
+            </div>
+        
+     
+            </div >
+
+
+          
+              
+
+               
+<!-- FORM AREA 3 ABOVE, INSIGHTS EXP PANEL -->
+
+          <div class="formarea5"> 
+
+                          
+                  
+          </div>
+
+
+          
+        </div>
+
+
+        
+      
+         
+
+         
+
+        
+     </mat-drawer-content>
+
+
+  </mat-drawer-container>
+ 
